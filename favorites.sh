@@ -12,8 +12,21 @@ function save {
 }
 
 function go {
-    cd "$(cat ~/.favoris_bash | grep "^$1" | cut -d'>' -f2 | sed 's/\\ / /g' | sed 's/^ *//g' | sed 's/ *$//g')"
-    $SHELL # Force the shell to reload the new path (otherwise, it will not work)
+    if [ $(echo $1 | grep -c "/") -eq 0 ]; then
+        dir=$(cat ~/.favoris_bash | grep "^$1" | cut -d'>' -f2 | sed 's/\\ / /g' | sed 's/^ *//g' | sed 's/ *$//g')
+        if [ $(echo "$dir" | wc -l) -gt 1 ]; then
+            echo "Plusieurs répertoires correspondent à votre recherche"
+            echo "$dir"
+            exit 1
+        fi
+        if [ -z "$dir" ]; then
+            echo "Aucun répertoire ne correspond à votre recherche"
+            exit 1
+        fi
+        cd "$dir"
+        $SHELL # Force the shell to reload the new path (otherwise, it will not work)
+        exit 0
+    fi
 }
 
 function remove {
