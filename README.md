@@ -3,6 +3,7 @@
 ## Description
 
 Ce script permet de gérer des favoris pour le shell. Il permet de créer des favoris, de se dépacer entre les favoris, de les supprimer et de les lister.
+Un rapport est disponible (voir `Rapport.pdf`).
 
 ## Installation
 
@@ -32,6 +33,10 @@ Pour lister les favoris, il suffit de lancer la commande `favorites.sh` sans arg
 ```bash
 $ favorites.sh L
 ```
+
+### Screenshots
+
+Les fonctionnalités sont illustrées par les captures d'écran présentes dans le dossier `screenshots`.
 
 ## Auteur
 
